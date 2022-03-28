@@ -3,9 +3,11 @@ package com.machine.coffeemachine.Controller;
 import com.machine.coffeemachine.model.Message;
 import com.machine.coffeemachine.repo.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @Controller
@@ -20,10 +22,23 @@ public class MachineController {
     public @ResponseBody
     String addNewCoffee(@RequestParam String coffeeName) {
 
-        Message n = new Message();
-        n.setCoffeeName(coffeeName);
-        messageRepo.save(n);
-        return "Saved";
+        Message message = new Message();
+
+
+
+        if (coffeeName.equals("Americano")){
+            message.setCoffeeName(coffeeName);
+            messageRepo.save(message);
+            return "Вы выбрали Американо";
+        } else if(coffeeName.equals("Latte")){
+            message.setCoffeeName(coffeeName);
+            messageRepo.save(message);
+            return "Вы выбрали Латте";
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,"Такой кофе отсутствует. Повторите ввод.");
+        }
+
     }
 
     @GetMapping(path = "/all")
