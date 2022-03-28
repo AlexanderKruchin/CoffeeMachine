@@ -18,10 +18,10 @@ public class MachineController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/createCoffee")
     public @ResponseBody
-    String addNewCoffee(@RequestParam String name) {
+    String addNewCoffee(@RequestParam String coffeeName) {
 
         Message n = new Message();
-        n.setCoffeeName(name);
+        n.setCoffeeName(coffeeName);
         messageRepo.save(n);
         return "Saved";
     }
