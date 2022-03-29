@@ -26,7 +26,7 @@ public class CoffeeMachineApplication {
         info
                 .title("Coffee Machine API")
                 .description("Alexandr Kruchin Coffee Machine Open API")
-                .version("v1.0.0");
+                .version("v1.1.0");
         return info;
     }
 }

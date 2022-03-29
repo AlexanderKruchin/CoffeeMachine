@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class Message {
 
@@ -13,6 +14,7 @@ public class Message {
     private Integer id;
 
     private String coffeeName;
+
 
     public Integer getId() {
         return id;
